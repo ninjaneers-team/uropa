@@ -1,0 +1,39 @@
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+      - freebsd
+    goarch:
+      - amd64
+    asmflags:
+      - all=-trimpath={{.Env.GOPATH}}
+    ldflags:
+      - -s -w -X github.com/ninjaneers-team/uropa/cmd.VERSION={{ .Tag }} -X github.com/ninjaneers-team/uropa/cmd.COMMIT={{ .ShortCommit }}
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}"
+nfpms:
+  - name_template: '{{ .ProjectName }}_{{ .Tag }}_{{ .Arch }}'
+    homepage:  https://github.com/ninjaneers-team/uropa
+    description: Declarative configuration for Opa
+    maintainer: Ninjaneers GmbH <info@ninjaneers.de>
+    license: Apache License v2.0
+    formats:
+      - deb
+      - rpm
+brews:
+  - github:
+      owner: ninjaneers-team
+      name: homebrew-uropa
+    commit_author:
+      name: Ninjaneers GmbH
+      email: info@ninjaneers.de
+    homepage: "https://github.com/ninjaneers-team/uropa"
+    description: Declarative configuration for Opa
+    skip_upload: true
+    test: |
+      system "#{bin}/uropa version"
