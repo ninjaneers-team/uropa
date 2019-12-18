@@ -2,12 +2,6 @@
 
 urOpa provides declarative configuration and drift detection for Opa.
 
-## Summary
-
-Here is an introductory screen-cast explaining urOpa:
-
-[![asciicast](https://asciinema.org/a/238318.svg)](https://asciinema.org/a/238318)
-
 ## Table of content
 
 - [Design](#design)
