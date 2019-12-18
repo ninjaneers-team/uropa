@@ -4,8 +4,6 @@ urOpa provides declarative configuration and drift detection for Open Policy Age
 
 [![Build Status](https://travis-ci.com/ninjaneers-team/uropa.svg?branch=master)](https://travis-ci.com/ninjaneers-team/uropa)
 
-[![asciicast](https://asciinema.org/a/238318.svg)](https://asciinema.org/a/238318)
-
 ## Table of Content
 
 - [**Features**](#features)
