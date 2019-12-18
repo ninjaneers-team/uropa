@@ -89,7 +89,7 @@ You can use `--help` flag once you've urOpa installed on your system
 to get help in the terminal itself.
 
 The project's documentation site is
-[https://uropa.yolo42.com](https://uropa.yolo42.com).
+[https://uropa.github.com](https://uropa.github.com).
 
 ## Changelog
 
