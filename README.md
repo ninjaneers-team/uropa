@@ -1,3 +1,5 @@
+# WORK IN PROGRESS!
+
 # urOpa: Declarative configuration for Opa
 
 urOpa provides declarative configuration and drift detection for Open Policy Agent.
