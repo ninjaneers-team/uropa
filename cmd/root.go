@@ -70,9 +70,9 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "",
 		"config file (default is $HOME/.uropa.yaml)")
 
-	rootCmd.PersistentFlags().String("opa-addr", "http://localhost:8001",
+	rootCmd.PersistentFlags().String("opa-addr", "http://localhost:8181",
 		"HTTP Address of Opa's Admin API.\n"+
-			"This value can also be set using DECK_KONG_ADDR\n"+
+			"This value can also be set using UROPA_OPA_ADDR\n"+
 			" environment variable.")
 	viper.BindPFlag("opa-addr",
 		rootCmd.PersistentFlags().Lookup("opa-addr"))
@@ -85,7 +85,7 @@ func init() {
 
 	rootCmd.PersistentFlags().Bool("tls-skip-verify", false,
 		"Disable verification of Opa's Admin TLS certificate.\n"+
-			"This value can also be set using DECK_TLS_SKIP_VERIFY "+
+			"This value can also be set using UROPA_TLS_SKIP_VERIFY "+
 			"environment variable.")
 	viper.BindPFlag("tls-skip-verify",
 		rootCmd.PersistentFlags().Lookup("tls-skip-verify"))
@@ -93,7 +93,7 @@ func init() {
 	rootCmd.PersistentFlags().String("tls-server-name", "",
 		"Custom CA certificate to use to verify"+
 			"Opa's Admin TLS certificate.\n"+
-			"This value can also be set using DECK_TLS_SERVER_NAME"+
+			"This value can also be set using UROPA_TLS_SERVER_NAME"+
 			" environment variable.")
 	viper.BindPFlag("tls-server-name",
 		rootCmd.PersistentFlags().Lookup("tls-server-name"))
@@ -101,7 +101,7 @@ func init() {
 	rootCmd.PersistentFlags().String("ca-cert", "",
 		"Custom CA certificate to use to verify"+
 			"Opa's Admin TLS certificate.\n"+
-			"This value can also be set using DECK_CA_CERT"+
+			"This value can also be set using UROPA_CA_CERT"+
 			" environment variable.")
 	viper.BindPFlag("ca-cert",
 		rootCmd.PersistentFlags().Lookup("ca-cert"))

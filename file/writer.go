@@ -45,11 +45,11 @@ func OpaStateToFile(OpaState *state.OpaState, config WriteConfig) error {
 		}
 	}
 
-	services, err := OpaState.Policies.GetAll()
+	policies, err := OpaState.Policies.GetAll()
 	if err != nil {
 		return err
 	}
-	for _, s := range services {
+	for _, s := range policies {
 		s := FPolicy{Policy: s.Policy}
 
 		zeroOutID(&s, s.Name, config.WithID)

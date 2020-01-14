@@ -3,10 +3,12 @@ package opa
 // Policy represents a Policy in Opa.
 // +k8s:deepcopy-gen=true
 type Policy struct {
-	ID        *string `json:"id,omitempty" yaml:"id,omitempty"`
-	Name      *string `json:"name,omitempty" yaml:"name,omitempty"`
-	CreatedAt *int    `json:"created_at,omitempty" yaml:"created_at,omitempty"`
-	UpdatedAt *int    `json:"updated_at,omitempty" yaml:"updated_at,omitempty"`
+	ID        *string   `json:"id,omitempty" yaml:"id,omitempty"`
+	Name      *string   `json:"name,omitempty" yaml:"name,omitempty"`
+	Tags      []*string `json:"tags,omitempty" yaml:"tags,omitempty"`
+	Rego      *string   `json:"rego,omitempty" yaml:"rego,omitempty"`
+	CreatedAt *int      `json:"created_at,omitempty" yaml:"created_at,omitempty"`
+	UpdatedAt *int      `json:"updated_at,omitempty" yaml:"updated_at,omitempty"`
 }
 
 // Configuration represents a config of a plugin in Opa.

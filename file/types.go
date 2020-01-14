@@ -37,10 +37,12 @@ func (s FPolicy) id() string {
 }
 
 type policy struct {
-	CreatedAt *int    `json:"created_at,omitempty" yaml:"created_at,omitempty"`
-	ID        *string `json:"id,omitempty" yaml:"id,omitempty"`
-	Name      *string `json:"name,omitempty" yaml:"name,omitempty"`
-	UpdatedAt *int    `json:"updated_at,omitempty" yaml:"updated_at,omitempty"`
+	ID        *string   `json:"id,omitempty" yaml:"id,omitempty"`
+	Name      *string   `json:"name,omitempty" yaml:"name,omitempty"`
+	Tags      []*string `json:"tags,omitempty" yaml:"tags,omitempty"`
+	Rego      *string   `json:"rego,omitempty" yaml:"rego,omitempty"`
+	CreatedAt *int      `json:"created_at,omitempty" yaml:"created_at,omitempty"`
+	UpdatedAt *int      `json:"updated_at,omitempty" yaml:"updated_at,omitempty"`
 }
 
 func copyToPolicy(fPolicy FPolicy) policy {
@@ -51,11 +53,13 @@ func copyToPolicy(fPolicy FPolicy) policy {
 	return s
 }
 
-func copyFromPolicy(policy policy, fService *FPolicy) {
-	fService.CreatedAt = policy.CreatedAt
-	fService.ID = policy.ID
-	fService.Name = policy.Name
-	fService.UpdatedAt = policy.UpdatedAt
+func copyFromPolicy(policy policy, fPolicy *FPolicy) {
+	fPolicy.CreatedAt = policy.CreatedAt
+	fPolicy.ID = policy.ID
+	fPolicy.Name = policy.Name
+	fPolicy.Tags = policy.Tags
+	fPolicy.Rego = policy.Rego
+	fPolicy.UpdatedAt = policy.UpdatedAt
 }
 
 // MarshalYAML is a custom marshal to handle

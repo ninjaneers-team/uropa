@@ -34,7 +34,7 @@ func Get(client *opa.Client, config Config) (*utils.OpaRawState, error) {
 	var state utils.OpaRawState
 	policies, err := GetAllPolicies(client, config.SelectorTags)
 	if err != nil {
-		return nil, errors.Wrap(err, "services")
+		return nil, errors.Wrap(err, "policies")
 	}
 
 	state.Policies = policies
@@ -42,7 +42,7 @@ func Get(client *opa.Client, config Config) (*utils.OpaRawState, error) {
 	return &state, nil
 }
 
-// GetAllPolicies queries Opa for all the services using client.
+// GetAllPolicies queries Opa for all the policies using client.
 func GetAllPolicies(client *opa.Client, tags []string) ([]*opa.Policy, error) {
 	var policies []*opa.Policy
 	opt := newOpt(tags)

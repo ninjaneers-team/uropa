@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  opa:
+    image: openpolicyagent/opa:0.13.2
+    ports:
+      - 8181:8181
+    command:
+      - "run"
+      - "--server"
+      - "--log-level=debug"

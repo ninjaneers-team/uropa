@@ -36,9 +36,6 @@ func init() {
 	syncCmd.Flags().StringVarP(&syncCmdOpaStateFile,
 		"state", "s", "Opa.yaml", "file containing Opa's configuration. "+
 			"Use '-' to read from stdin.")
-	syncCmd.Flags().BoolVar(&dumpConfig.SkipConsumers, "skip-consumers",
-		false, "do not diff consumers or "+
-			"any plugins associated with consumers")
 	syncCmd.Flags().IntVar(&syncCmdParallelism, "parallelism",
 		10, "Maximum number of concurrent operations")
 	syncCmd.Flags().StringSliceVar(&dumpConfig.SelectorTags,

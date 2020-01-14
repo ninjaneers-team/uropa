@@ -40,7 +40,7 @@ func NewSyncer(current, target *state.OpaState) (*Syncer, error) {
 	s := &Syncer{}
 	s.currentState, s.targetState = current, target
 
-	s.postProcess.MustRegister("service", &policyPostAction{current})
+	s.postProcess.MustRegister("policy", &policyPostAction{current})
 	return s, nil
 }
 
@@ -72,11 +72,6 @@ func (sc *Syncer) createUpdate() error {
 	// then execute in a particular order
 
 	// TODO optimize: increase parallelism
-	// Unrelated entities like services, upstreams and certificates
-	// can be all changed at the same time, then have a barrier
-	// and then execute changes for routes, targets and snis.
-	// services should be created before routes
-
 	err := sc.createUpdatePolicies()
 	if err != nil {
 		return err

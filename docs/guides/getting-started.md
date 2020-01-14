@@ -27,7 +27,7 @@ you can skip this step.
 
 ```shell
 # lets create a service
-$ curl -s -XPOST http://localhost:8001/services -d 'name=foo' -d 'url=http://example.com' | jq
+$ curl -s -XPOST http://localhost:8181/v1/policies -d 'name=foo' -d 'url=http://example.com' | jq
 {
   "host": "example.com",
   "created_at": 1573161698,
@@ -46,7 +46,7 @@ $ curl -s -XPOST http://localhost:8001/services -d 'name=foo' -d 'url=http://exa
 }
 
 # let's create a route associated with the above service
-$ curl -s -XPOST http://localhost:8001/services/foo/routes -d 'name=bar' -d 'paths[]=/bar' | jq
+$ curl -s -XPOST http://localhost:8181/services/foo/routes -d 'name=bar' -d 'paths[]=/bar' | jq
 {
   "id": "83c2798d-6bd8-4182-a799-2632c9f670a5",
   "tags": null,

@@ -1,0 +1,10 @@
+_info:
+  select_tags:
+    - managed-by-uropa
+    - org-unit-42
+policies:
+  - name: policy1
+    rego: |
+      package test
+
+      default allow = false

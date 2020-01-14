@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"os"
 )
 
 // PolicyService handles Policies in Opa.
@@ -17,17 +18,26 @@ type PolicyService service
 func (s *PolicyService) Create(ctx context.Context,
 	policy *Policy) (*Policy, error) {
 
-	queryPath := "/policies"
-	method := "POST"
-	if policy.ID != nil {
-		queryPath = queryPath + "/" + *policy.ID
-		method = "PUT"
-	}
-	req, err := s.client.NewRequest(method, queryPath, nil, policy)
+	queryPath := "/v1/policies"
+	queryPath = queryPath + "/" + *policy.ID
+	method := "PUT"
+
+	handler, err := s.client.NewFile(*policy.Rego)
 
 	if err != nil {
 		return nil, err
 	}
+
+	f, err := os.Open(handler.Name())
+	if err != nil {
+		panic(err)
+	}
+
+	req, err := s.client.NewFormEncodedRequest(method, queryPath, nil, f)
+
+	defer f.Close()
+	defer os.Remove(f.Name())
+	defer handler.Close()
 
 	var createdPolicy Policy
 	_, err = s.client.Do(ctx, req, &createdPolicy)
@@ -45,8 +55,8 @@ func (s *PolicyService) Get(ctx context.Context,
 		return nil, errors.New("usernameOrID cannot be nil for Get operation")
 	}
 
-	endpoint := fmt.Sprintf("/policies/%v", *usernameOrID)
-	req, err := s.client.NewRequest("GET", endpoint, nil, nil)
+	endpoint := fmt.Sprintf("/v1/policies/%v", *usernameOrID)
+	req, err := s.client.NewJsonRequest("GET", endpoint, nil, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +81,7 @@ func (s *PolicyService) GetByCustomID(ctx context.Context,
 		CustomID string `url:"custom_id,omitempty"`
 	}
 
-	req, err := s.client.NewRequest("GET", "/policies",
+	req, err := s.client.NewJsonRequest("GET", "/v1/policies",
 		&QS{CustomID: *customID}, nil)
 	if err != nil {
 		return nil, err
@@ -96,23 +106,7 @@ func (s *PolicyService) GetByCustomID(ctx context.Context,
 // Update updates a Policy in Opa
 func (s *PolicyService) Update(ctx context.Context,
 	policy *Policy) (*Policy, error) {
-
-	if isEmptyString(policy.ID) {
-		return nil, errors.New("ID cannot be nil for Update operation")
-	}
-
-	endpoint := fmt.Sprintf("/policies/%v", *policy.ID)
-	req, err := s.client.NewRequest("PATCH", endpoint, nil, policy)
-	if err != nil {
-		return nil, err
-	}
-
-	var updatedAPI Policy
-	_, err = s.client.Do(ctx, req, &updatedAPI)
-	if err != nil {
-		return nil, err
-	}
-	return &updatedAPI, nil
+	return s.Create(ctx, policy)
 }
 
 // Delete deletes a Policy in Opa
@@ -123,8 +117,8 @@ func (s *PolicyService) Delete(ctx context.Context,
 		return errors.New("usernameOrID cannot be nil for Delete operation")
 	}
 
-	endpoint := fmt.Sprintf("/policies/%v", *usernameOrID)
-	req, err := s.client.NewRequest("DELETE", endpoint, nil, nil)
+	endpoint := fmt.Sprintf("/v1/policies/%v", *usernameOrID)
+	req, err := s.client.NewJsonRequest("DELETE", endpoint, nil, nil)
 	if err != nil {
 		return err
 	}
@@ -137,7 +131,7 @@ func (s *PolicyService) Delete(ctx context.Context,
 // opt can be used to control pagination.
 func (s *PolicyService) List(ctx context.Context,
 	opt *ListOpt) ([]*Policy, *ListOpt, error) {
-	data, next, err := s.client.list(ctx, "/policies", opt)
+	data, next, err := s.client.list(ctx, "/v1/policies", opt)
 	if err != nil {
 		return nil, nil, err
 	}

@@ -14,9 +14,7 @@ type stateBuilder struct {
 
 	selectTags   []string
 	intermediate *state.OpaState
-	certIDs      map[string]bool
-
-	err error
+	err          error
 }
 
 // uuid generates a UUID string and returns a pointer to it.
@@ -38,7 +36,6 @@ func (b *stateBuilder) build() (*utils.OpaRawState, error) {
 	if err != nil {
 		return nil, err
 	}
-	b.certIDs = map[string]bool{}
 
 	// build
 	b.policies()
@@ -66,13 +63,13 @@ func (b *stateBuilder) policies() {
 
 func (b *stateBuilder) ingestPolicy(r FPolicy) error {
 	if utils.Empty(r.ID) {
-		route, err := b.currentState.Policies.Get(*r.Name)
+		policy, err := b.currentState.Policies.Get(*r.Name)
 		if err == state.ErrNotFound {
 			r.ID = uuid()
 		} else if err != nil {
 			return err
 		} else {
-			r.ID = opa.String(*route.ID)
+			r.ID = opa.String(*policy.ID)
 		}
 	}
 

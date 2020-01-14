@@ -20,7 +20,7 @@ func policyFromStuct(arg diff.Event) *state.Policy {
 	return policy
 }
 
-// Create creates a Policy in Opa.
+// Create a Policy in Opa.
 // The arg should be of type diff.Event, containing the policy to be created,
 // else the function will panic.
 // It returns a the created *state.Policy.

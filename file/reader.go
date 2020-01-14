@@ -2,7 +2,6 @@ package file
 
 import (
 	"fmt"
-
 	"github.com/ninjaneers-team/uropa/state"
 	"github.com/ninjaneers-team/uropa/utils"
 	"github.com/pkg/errors"
