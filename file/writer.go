@@ -52,7 +52,7 @@ func OpaStateToFile(OpaState *state.OpaState, config WriteConfig) error {
 	for _, s := range policies {
 		s := FPolicy{Policy: s.Policy}
 
-		zeroOutID(&s, s.Name, config.WithID)
+		zeroOutID(&s, s.ID, config.WithID)
 		zeroOutTimestamps(&s)
 		file.Policies = append(file.Policies, s)
 	}

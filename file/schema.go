@@ -59,26 +59,11 @@ const contentSchema = `{
     },
     "FPolicy": {
       "properties": {
-        "created_at": {
-          "type": "integer"
-        },
         "id": {
-          "type": "string"
-        },
-        "name": {
           "type": "string"
         },
 		"raw": {
           "type": "string"
-        },
-        "tags": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "updated_at": {
-          "type": "integer"
         }
       },
       "additionalProperties": false,
@@ -142,26 +127,11 @@ const contentSchema = `{
     },
     "Policy": {
       "properties": {
-        "created_at": {
-          "type": "integer"
-        },
         "id": {
-          "type": "string"
-        },
-        "name": {
           "type": "string"
         },
 		"raw": {
           "type": "string"
-        },
-        "tags": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "updated_at": {
-          "type": "integer"
         }
       },
       "additionalProperties": false,
@@ -170,11 +140,6 @@ const contentSchema = `{
         {
           "required": [
             "id"
-          ]
-        },
-        {
-          "required": [
-            "name"
           ]
         }
       ]

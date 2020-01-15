@@ -78,7 +78,7 @@ func (sc *Syncer) createUpdatePolicy(policy *state.Policy) (*Event, error) {
 	}
 	if err != nil {
 		return nil, errors.Wrapf(err, "error looking up policy %v",
-			*policy.Name)
+			*policy.ID)
 	}
 
 	// found, check if update needed

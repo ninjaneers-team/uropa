@@ -66,7 +66,7 @@ func TestServiceSetTest(t *testing.T) {
 		{
 			desc: "empty service",
 			arg:  &Opa.Service{},
-			want: &serviceDefaults,
+			want: &policyDefaults,
 		},
 		{
 			desc: "timeout value value is not overridden",

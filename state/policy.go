@@ -17,12 +17,6 @@ var policyTableSchema = &memdb.TableSchema{
 			Unique:  true,
 			Indexer: &memdb.StringFieldIndex{Field: "ID"},
 		},
-		"name": {
-			Name:         "name",
-			Unique:       true,
-			Indexer:      &memdb.StringFieldIndex{Field: "Name"},
-			AllowMissing: true,
-		},
 		all: allIndex,
 	},
 }
@@ -42,8 +36,8 @@ func (k *PoliciesCollection) Add(policy Policy) error {
 
 	var searchBy []string
 	searchBy = append(searchBy, *policy.ID)
-	if !utils.Empty(policy.Name) {
-		searchBy = append(searchBy, *policy.Name)
+	if !utils.Empty(policy.ID) {
+		searchBy = append(searchBy, *policy.ID)
 	}
 	_, err := getPolicy(txn, searchBy...)
 	if err == nil {
@@ -63,7 +57,7 @@ func (k *PoliciesCollection) Add(policy Policy) error {
 func getPolicy(txn *memdb.Txn, IDs ...string) (*Policy, error) {
 	for _, id := range IDs {
 		res, err := multiIndexLookupUsingTxn(txn, policyTableName,
-			[]string{"name", "id"}, id)
+			[]string{"id"}, id)
 		if err == ErrNotFound {
 			continue
 		}
@@ -81,14 +75,14 @@ func getPolicy(txn *memdb.Txn, IDs ...string) (*Policy, error) {
 }
 
 // Get gets a policy by name or ID.
-func (k *PoliciesCollection) Get(nameOrID string) (*Policy, error) {
-	if nameOrID == "" {
+func (k *PoliciesCollection) Get(id string) (*Policy, error) {
+	if id == "" {
 		return nil, errIDRequired
 	}
 
 	txn := k.db.Txn(false)
 	defer txn.Abort()
-	return getPolicy(txn, nameOrID)
+	return getPolicy(txn, id)
 }
 
 // Update udpates an existing policy.
@@ -130,15 +124,15 @@ func deletePolicy(txn *memdb.Txn, nameOrID string) error {
 }
 
 // Delete deletes a policy by name or ID.
-func (k *PoliciesCollection) Delete(nameOrID string) error {
-	if nameOrID == "" {
+func (k *PoliciesCollection) Delete(id string) error {
+	if id == "" {
 		return errIDRequired
 	}
 
 	txn := k.db.Txn(true)
 	defer txn.Abort()
 
-	err := deletePolicy(txn, nameOrID)
+	err := deletePolicy(txn, id)
 	if err != nil {
 		return err
 	}

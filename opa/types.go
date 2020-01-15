@@ -4,11 +4,7 @@ package opa
 // +k8s:deepcopy-gen=true
 type Policy struct {
 	ID        *string   `json:"id,omitempty" yaml:"id,omitempty"`
-	Name      *string   `json:"name,omitempty" yaml:"name,omitempty"`
-	Tags      []*string `json:"tags,omitempty" yaml:"tags,omitempty"`
 	Raw       *string   `json:"raw,omitempty" yaml:"raw,omitempty"`
-	CreatedAt *int      `json:"created_at,omitempty" yaml:"created_at,omitempty"`
-	UpdatedAt *int      `json:"updated_at,omitempty" yaml:"updated_at,omitempty"`
 }
 
 // Configuration represents a config of a plugin in Opa.
@@ -17,8 +13,8 @@ type Configuration map[string]interface{}
 // DeepCopyInto copies the receiver, writing into out. in must be non-nil.
 func (in *Policy) DeepCopyInto(out *Policy) {
 	*out = *in
-	if in.Name != nil {
-		in, out := &in.Name, &out.Name
+	if in.ID != nil {
+		in, out := &in.ID, &out.ID
 		*out = new(string)
 		**out = **in
 	}

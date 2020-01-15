@@ -63,7 +63,7 @@ func (b *stateBuilder) policies() {
 
 func (b *stateBuilder) ingestPolicy(r FPolicy) error {
 	if utils.Empty(r.ID) {
-		policy, err := b.currentState.Policies.Get(*r.Name)
+		policy, err := b.currentState.Policies.Get(*r.ID)
 		if err == state.ErrNotFound {
 			r.ID = uuid()
 		} else if err != nil {

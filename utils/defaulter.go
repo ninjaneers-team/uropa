@@ -19,7 +19,7 @@ func GetOpaDefaulter() (*Defaulter, error) {
 	// TODO make defaults configurable
 	// TODO add support for file based defaults
 	var d Defaulter
-	err := d.Register(&serviceDefaults)
+	err := d.Register(&policyDefaults)
 	if err != nil {
 		return nil, errors.Wrap(err, "registering service with defaulter")
 	}

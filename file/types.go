@@ -30,36 +30,28 @@ func (s FPolicy) id() string {
 	if s.ID != nil {
 		return *s.ID
 	}
-	if s.Name != nil {
-		return *s.Name
+	if s.ID != nil {
+		return *s.ID
 	}
 	return ""
 }
 
 type policy struct {
 	ID        *string   `json:"id,omitempty" yaml:"id,omitempty"`
-	Name      *string   `json:"name,omitempty" yaml:"name,omitempty"`
-	Tags      []*string `json:"tags,omitempty" yaml:"tags,omitempty"`
 	Raw      *string   `json:"raw,omitempty" yaml:"raw,omitempty"`
-	CreatedAt *int      `json:"created_at,omitempty" yaml:"created_at,omitempty"`
-	UpdatedAt *int      `json:"updated_at,omitempty" yaml:"updated_at,omitempty"`
 }
 
 func copyToPolicy(fPolicy FPolicy) policy {
 	s := policy{}
 	s.ID = fPolicy.ID
-	s.Name = fPolicy.Name
+	s.ID = fPolicy.ID
 
 	return s
 }
 
 func copyFromPolicy(policy policy, fPolicy *FPolicy) {
-	fPolicy.CreatedAt = policy.CreatedAt
 	fPolicy.ID = policy.ID
-	fPolicy.Name = policy.Name
-	fPolicy.Tags = policy.Tags
 	fPolicy.Raw = policy.Raw
-	fPolicy.UpdatedAt = policy.UpdatedAt
 }
 
 // MarshalYAML is a custom marshal to handle

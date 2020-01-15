@@ -23,12 +23,9 @@ type templateData struct {
 
 var (
 	// policies
-	anyOfNameOrID = []*jsonschema.Type{
+	anyOfId = []*jsonschema.Type{
 		{
 			Required: []string{"id"},
-		},
-		{
-			Required: []string{"name"},
 		},
 	}
 )
@@ -48,7 +45,7 @@ func main() {
 		return nil
 	}
 	schema := reflector.Reflect(file.Content{})
-	schema.Definitions["Policies"].AnyOf = anyOfNameOrID
+	schema.Definitions["Policies"].AnyOf = anyOfId
 
 	jsonSchema, err := json.MarshalIndent(schema, "", "  ")
 	if err != nil {

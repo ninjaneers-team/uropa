@@ -30,7 +30,6 @@ type ConsoleString interface {
 
 // Meta contains additional information for an entity
 // type Meta struct {
-// 	Name   *string `json:"name,omitempty" yaml:"name,omitempty"`
 // 	Global *bool   `json:"global,omitempty" yaml:"global,omitempty"`
 // 	Kind   *string `json:"type,omitempty" yaml:"type,omitempty"`
 // }
@@ -67,11 +66,8 @@ type Policy struct {
 	Meta
 }
 
-// Identifier returns the endpoint key name or ID.
+// Identifier returns the endpoint key ID.
 func (s1 *Policy) Identifier() string {
-	if s1.Name != nil {
-		return *s1.Name
-	}
 	return *s1.ID
 }
 
@@ -97,13 +93,6 @@ func (s1 *Policy) EqualWithOpts(s2 *Policy,
 	if ignoreID {
 		s1Copy.ID = nil
 		s2Copy.ID = nil
-	}
-	if ignoreTS {
-		s1Copy.CreatedAt = nil
-		s2Copy.CreatedAt = nil
-
-		s1Copy.UpdatedAt = nil
-		s2Copy.UpdatedAt = nil
 	}
 	return reflect.DeepEqual(s1Copy, s2Copy)
 }
