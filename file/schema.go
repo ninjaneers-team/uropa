@@ -68,7 +68,7 @@ const contentSchema = `{
         "name": {
           "type": "string"
         },
-		"rego": {
+		"raw": {
           "type": "string"
         },
         "tags": {
@@ -151,7 +151,7 @@ const contentSchema = `{
         "name": {
           "type": "string"
         },
-		"rego": {
+		"raw": {
           "type": "string"
         },
         "tags": {

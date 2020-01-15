@@ -22,7 +22,7 @@ func (s *PolicyService) Create(ctx context.Context,
 	queryPath = queryPath + "/" + *policy.ID
 	method := "PUT"
 
-	handler, err := s.client.NewFile(*policy.Rego)
+	handler, err := s.client.NewFile(*policy.Raw)
 
 	if err != nil {
 		return nil, err
@@ -147,6 +147,7 @@ func (s *PolicyService) List(ctx context.Context,
 		if err != nil {
 			return nil, nil, err
 		}
+
 		policies = append(policies, &policy)
 	}
 

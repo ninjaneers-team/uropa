@@ -40,7 +40,7 @@ func (c *Client) list(ctx context.Context,
 		return nil, nil, err
 	}
 	var list struct {
-		Data []json.RawMessage `json:"data"`
+		Data []json.RawMessage `json:"result"`
 		Next *string           `json:"offset"`
 	}
 

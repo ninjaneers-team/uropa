@@ -3,8 +3,8 @@ _info:
     - managed-by-uropa
     - org-unit-42
 policies:
-  - name: policy1
-    rego: |
+  - id: test
+    raw: |
       package test
 
       default allow = false
