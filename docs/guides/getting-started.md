@@ -5,14 +5,6 @@ Once you've [installed](installation.md) urOpa, let's get started with it.
 You can find help in the terminal itself for any command using the `-help`
 flag.
 
-## Screen-cast
-
-Please watch the following screen-cast recording for a quick how-to and
-capabilities of urOpa:
-
-[![asciicast](https://asciinema.org/a/238318.svg)](https://asciinema.org/a/238318)
-
-
 ## Install Opa
 
 Make sure you've Opa installed and have access to Opa's Admin API.

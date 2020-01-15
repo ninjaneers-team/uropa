@@ -101,3 +101,7 @@ Changelog can be found in the [CHANGELOG.md](CHANGELOG.md) file.
 
 urOpa is licensed with Apache License Version 2.0.
 Please read the [LICENSE](LICENSE) file for more details.
+
+## Special Thanks
+
+This project based on [hbagdi/deck](https://github.com/hbagdi/deck). Thanks to [Harry](https://github.com/hbagdi) for maintaining decK! 
