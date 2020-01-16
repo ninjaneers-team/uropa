@@ -1,6 +1,5 @@
 # Releasing a version
 
-
 ## Prepare
 
 - Create a `docs/changelog-v0.5.0` branch. Substitute v0.5.0 with the version

@@ -3,6 +3,7 @@ module github.com/ninjaneers-team/uropa
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/alecthomas/jsonschema v0.0.0-20190626084004-00dfc6288dec
+	github.com/blang/semver v3.5.1+incompatible
 	github.com/fatih/color v1.7.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/google/go-querystring v1.0.0

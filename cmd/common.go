@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/blang/semver"
 	"os"
 
 	"github.com/fatih/color"
@@ -24,6 +25,8 @@ func SetStopCh(stopCh chan struct{}) {
 var dumpConfig dump.Config
 
 func syncMain(filename string, dry bool, parallelism int) error {
+
+	opaVersion, err := opaVersion(config)
 	// read target file
 	targetContent, err := file.GetContentFromFile(filename)
 	if err != nil {
@@ -46,7 +49,10 @@ func syncMain(filename string, dry bool, parallelism int) error {
 	}
 
 	// read the target state
-	rawState, err = file.Get(targetContent, currentState)
+	rawState, err = file.Get(targetContent, file.RenderConfig{
+		CurrentState: currentState,
+		OpaVersion:  opaVersion,
+	})
 	if err != nil {
 		return err
 	}
@@ -70,4 +76,19 @@ func syncMain(filename string, dry bool, parallelism int) error {
 		os.Exit(2)
 	}
 	return nil
+}
+
+func opaVersion(config utils.OpaClientConfig) (semver.Version, error) {
+	client, err := utils.GetOpaClient(config)
+	if err != nil {
+		return semver.Version{}, err
+	}
+
+	root, err := client.Root(nil)
+	if err != nil {
+		return semver.Version{}, err
+	}
+
+	v, err := utils.CleanOpaVersion(root["version"].(string))
+	return semver.ParseTolerant(v)
 }

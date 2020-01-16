@@ -21,11 +21,11 @@ var (
 // dumpCmd represents the dump command
 var dumpCmd = &cobra.Command{
 	Use:   "dump",
-	Short: "Export Kong configuration to a file",
-	Long: `Dump command reads all the entities present in Kong
+	Short: "Export Opa configuration to a file",
+	Long: `Dump command reads all the entities present in Opa
 and writes them to a file on disk.
 The file can then be read using the Sync o Diff command to again
-configure Kong.`,
+configure Opa.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 
 		client, err := utils.GetOpaClient(config)
@@ -37,7 +37,7 @@ configure Kong.`,
 
 		rawState, err := dump.Get(client, dumpConfig)
 		if err != nil {
-			return errors.Wrap(err, "reading configuration from Kong")
+			return errors.Wrap(err, "reading configuration from Opa")
 		}
 		ks, err := state.Get(rawState)
 		if err != nil {
@@ -56,7 +56,7 @@ configure Kong.`,
 func init() {
 	rootCmd.AddCommand(dumpCmd)
 	dumpCmd.Flags().StringVarP(&dumpCmdOpaStateFile, "output-file", "o",
-		"kong", "file to which to write Kong's configuration."+
+		"opa", "file to which to write Opa's configuration."+
 			"Use '-' to write to stdout.")
 	dumpCmd.Flags().StringVar(&dumpCmdStateFormat, "format",
 		"yaml", "output file format: json or yaml")

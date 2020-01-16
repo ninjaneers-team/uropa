@@ -3,6 +3,12 @@ package utils
 import (
 	"crypto/rand"
 	"encoding/hex"
+	"fmt"
+	"regexp"
+)
+
+var (
+	opaVersionRegex = regexp.MustCompile(`^\d+\.\d+`)
 )
 
 // Empty checks if a string referenced by s or s itself is empty.
@@ -35,4 +41,17 @@ func UUID() string {
 	hex.Encode(buf[24:], uuid[10:])
 
 	return string(buf)
+}
+
+// CleanOpaVersion takes a version of Opa and returns back a string in
+// the form of `/major.minor` version. There are various dashes and dots
+// and other descriptors in Opa version strings, which has often created
+// confusion in code and incorrect parsing, and hence this function does
+// not return the patch version (on which shouldn't rely on anyways).
+func CleanOpaVersion(version string) (string, error) {
+	matches := opaVersionRegex.FindStringSubmatch(version)
+	if len(matches) < 1 {
+		return "", fmt.Errorf("unknown Opa version")
+	}
+	return matches[0], nil
 }

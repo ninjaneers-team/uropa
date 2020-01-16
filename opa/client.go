@@ -206,3 +206,19 @@ func (c *Client) Root(ctx context.Context) (map[string]interface{}, error) {
 	}
 	return root, nil
 }
+
+// Root returns the response of GET request on root of
+// Admin API (GET /).
+func (c *Client) Health(ctx context.Context) (map[string]interface{}, error) {
+	req, err := c.NewJsonRequest("GET", "/health", nil, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	var root map[string]interface{}
+	_, err = c.Do(ctx, req, &root)
+	if err != nil {
+		return nil, err
+	}
+	return root, nil
+}

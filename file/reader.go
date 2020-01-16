@@ -2,10 +2,18 @@ package file
 
 import (
 	"fmt"
+	"github.com/blang/semver"
 	"github.com/ninjaneers-team/uropa/state"
 	"github.com/ninjaneers-team/uropa/utils"
 	"github.com/pkg/errors"
 )
+
+// RenderConfig contains necessary information to render a correct
+// OpaConfig from a file.
+type RenderConfig struct {
+	CurrentState *state.OpaState
+	OpaVersion   semver.Version
+}
 
 // GetContentFromFile reads in a file with filename and constructs
 // a state. If filename is `-`, then it will read from os.Stdin.
@@ -26,12 +34,12 @@ func GetContentFromFile(filename string) (*Content, error) {
 // Get process the fileContent and renders a RawState.
 // IDs of entities are matches based on currentState.
 func Get(fileContent *Content,
-	currentState *state.OpaState) (*utils.OpaRawState, error) {
+	opt RenderConfig) (*utils.OpaRawState, error) {
 
 	var builder stateBuilder
 	// setup
 	builder.targetContent = fileContent
-	builder.currentState = currentState
+	builder.currentState = opt.CurrentState
 	d, err := utils.GetOpaDefaulter()
 	if err != nil {
 		return nil, errors.Wrap(err, "creating defaulter")
