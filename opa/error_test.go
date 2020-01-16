@@ -26,7 +26,7 @@ func TestIsNotFoundErrE2E(T *testing.T) {
 	assert.Nil(err)
 	assert.NotNil(client)
 
-	consumer, err := client.Consumers.Get(defaultCtx, String("does-not-exists"))
+	consumer, err := client.Policies.Get(defaultCtx, String("does-not-exists"))
 	assert.Nil(consumer)
 	assert.NotNil(err)
 	assert.True(IsNotFoundErr(err))

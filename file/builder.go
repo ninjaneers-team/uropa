@@ -29,9 +29,6 @@ func (b *stateBuilder) build() (*utils.OpaRawState, error) {
 	var err error
 	b.rawState = &utils.OpaRawState{}
 
-	if b.targetContent.Info != nil {
-		b.selectTags = b.targetContent.Info.SelectorTags
-	}
 	b.intermediate, err = state.NewOpaState()
 	if err != nil {
 		return nil, err

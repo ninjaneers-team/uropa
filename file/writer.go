@@ -3,25 +3,19 @@ package file
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/ninjaneers-team/uropa/state"
+	"github.com/pkg/errors"
+	yaml "gopkg.in/yaml.v3"
 	"io/ioutil"
 	"path/filepath"
-	"reflect"
 	"sort"
 	"strings"
-
-	"github.com/ninjaneers-team/uropa/state"
-	"github.com/ninjaneers-team/uropa/utils"
-	"github.com/pkg/errors"
-	yaml "gopkg.in/yaml.v2"
 )
 
 // WriteConfig holds settings to use to write the state file.
 type WriteConfig struct {
-	Workspace  string
-	SelectTags []string
 	Filename   string
 	FileFormat Format
-	WithID     bool
 }
 
 func compareID(obj1, obj2 id) bool {
@@ -31,19 +25,10 @@ func compareID(obj1, obj2 id) bool {
 // OpaStateToFile writes a state object to file with filename.
 // It will omit timestamps and IDs while writing.
 func OpaStateToFile(OpaState *state.OpaState, config WriteConfig) error {
-	// TODO break-down this giant function
 	var file Content
 
-	file.Workspace = config.Workspace
 	// hardcoded as only one version exists currently
 	file.FormatVersion = "1.1"
-
-	selectTags := config.SelectTags
-	if len(selectTags) > 0 {
-		file.Info = &Info{
-			SelectorTags: selectTags,
-		}
-	}
 
 	policies, err := OpaState.Policies.GetAll()
 	if err != nil {
@@ -52,8 +37,6 @@ func OpaStateToFile(OpaState *state.OpaState, config WriteConfig) error {
 	for _, s := range policies {
 		s := FPolicy{Policy: s.Policy}
 
-		zeroOutID(&s, s.ID, config.WithID)
-		zeroOutTimestamps(&s)
 		file.Policies = append(file.Policies, s)
 	}
 	sort.SliceStable(file.Policies, func(i, j int) bool {
@@ -98,37 +81,4 @@ func addExtToFilename(filename, format string) string {
 		filename = filename + "." + strings.ToLower(format)
 	}
 	return filename
-}
-
-func zeroOutTimestamps(obj interface{}) {
-	zeroOutField(obj, "CreatedAt")
-	zeroOutField(obj, "UpdatedAt")
-}
-
-var zero reflect.Value
-
-func zeroOutField(obj interface{}, field string) {
-	ptr := reflect.ValueOf(obj)
-	if ptr.Kind() != reflect.Ptr {
-		return
-	}
-	v := reflect.Indirect(ptr)
-	ts := v.FieldByName(field)
-	if ts == zero {
-		return
-	}
-	ts.Set(reflect.Zero(ts.Type()))
-}
-
-func zeroOutID(obj interface{}, altName *string, withID bool) {
-	// withID is set, export the ID
-	if withID {
-		return
-	}
-	// altName is not set, export the ID
-	if utils.Empty(altName) {
-		return
-	}
-	// zero the ID field
-	zeroOutField(obj, "ID")
 }

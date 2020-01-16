@@ -51,23 +51,20 @@ func TestWriteOpaStateToStdoutEmptyState(t *testing.T) {
 	// YAML
 	output := captureOutput(func() {
 		OpaStateToFile(ks, WriteConfig{
-			Workspace:  "foo",
 			Filename:   filename,
 			FileFormat: YAML,
 		})
 	})
-	assert.Equal("_format_version: \"1.1\"\n_workspace: foo\n", output)
+	assert.Equal("_format_version: \"1.1\"\n", output)
 	// JSON
 	output = captureOutput(func() {
 		OpaStateToFile(ks, WriteConfig{
-			Workspace:  "foo",
 			Filename:   filename,
 			FileFormat: JSON,
 		})
 	})
 	expected := `{
-  "_format_version": "1.1",
-  "_workspace": "foo"
+  "_format_version": "1.1"
 }`
 	assert.Equal(expected, output)
 }
@@ -76,11 +73,10 @@ func TestWriteOpaStateToStdoutStateWithOneService(t *testing.T) {
 	var ks, _ = state.NewOpaState()
 	var filename = "-"
 	assert := assert.New(t)
-	var service state.Service
-	service.ID = Opa.String("first")
-	service.Host = Opa.String("example.com")
-	service.Name = Opa.String("my-policy")
-	ks.Services.Add(service)
+	var policy state.Policy
+	policy.ID = opa.String("first")
+	policy.Raw = opa.String("example.com")
+	ks.Policies.Add(policy)
 	// YAML
 	output := captureOutput(func() {
 		OpaStateToFile(ks, WriteConfig{
@@ -88,91 +84,21 @@ func TestWriteOpaStateToStdoutStateWithOneService(t *testing.T) {
 			FileFormat: YAML,
 		})
 	})
-	expected := fmt.Sprintf("_format_version: \"1.1\"\nservices:\n- host: %s\n  name: %s\n", *service.Host, *service.Name)
+	expected := fmt.Sprintf("_format_version: \"1.1\"\npolicies:\n- id: %s\n  raw: %s\n", *policy.ID, *policy.Raw)
 	assert.Equal(expected, output)
 	// JSON
 	output = captureOutput(func() {
 		OpaStateToFile(ks, WriteConfig{
-			Workspace:  "foo",
 			Filename:   filename,
 			FileFormat: JSON,
 		})
 	})
 	expected = `{
   "_format_version": "1.1",
-  "_workspace": "foo",
-  "services": [
+  "policies": [
     {
-      "host": "example.com",
-      "name": "my-policy"
-    }
-  ]
-}`
-	assert.Equal(expected, output)
-}
-
-func TestWriteOpaStateToStdoutStateWithOneServiceOneRoute(t *testing.T) {
-	var ks, _ = state.NewOpaState()
-	var filename = "-"
-	assert := assert.New(t)
-	var service state.Service
-	service.ID = Opa.String("first")
-	service.Host = Opa.String("example.com")
-	service.Name = Opa.String("my-policy")
-	ks.Services.Add(service)
-
-	var route state.Route
-	route.Name = Opa.String("my-route")
-	route.ID = Opa.String("first")
-	route.Hosts = Opa.StringSlice("example.com", "demo.example.com")
-	route.Service = &Opa.Service{
-		ID:   Opa.String(*service.ID),
-		Name: Opa.String(*service.Name),
-	}
-
-	ks.Routes.Add(route)
-	// YAML
-	output := captureOutput(func() {
-		OpaStateToFile(ks, WriteConfig{
-			Filename:   filename,
-			FileFormat: YAML,
-		})
-	})
-	expected := fmt.Sprintf(`_format_version: "1.1"
-services:
-- host: %s
-  name: %s
-  routes:
-  - hosts:
-    - %s
-    - %s
-    name: %s
-`, *service.Host, *service.Name, *route.Hosts[0], *route.Hosts[1], *route.Name)
-	assert.Equal(expected, output)
-	// JSON
-	output = captureOutput(func() {
-		OpaStateToFile(ks, WriteConfig{
-			Workspace:  "foo",
-			Filename:   filename,
-			FileFormat: JSON,
-		})
-	})
-	expected = `{
-  "_format_version": "1.1",
-  "_workspace": "foo",
-  "services": [
-    {
-      "host": "example.com",
-      "name": "my-policy",
-      "routes": [
-        {
-          "hosts": [
-            "example.com",
-            "demo.example.com"
-          ],
-          "name": "my-route"
-        }
-      ]
+      "id": "example.com",
+      "raw": "my-policy"
     }
   ]
 }`

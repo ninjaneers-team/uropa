@@ -1,13 +1,5 @@
 {
-  "services": {
+  "policies": {
     "foo": "bar"
-  },
-  "consumers": [
-    {
-      "username": "foo"
-    },
-    {
-      "username": "bar"
-    }
-  ]
+  }
 }

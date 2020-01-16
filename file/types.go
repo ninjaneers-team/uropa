@@ -44,7 +44,7 @@ type policy struct {
 func copyToPolicy(fPolicy FPolicy) policy {
 	s := policy{}
 	s.ID = fPolicy.ID
-	s.ID = fPolicy.ID
+	s.Raw = fPolicy.Raw
 
 	return s
 }
@@ -90,18 +90,10 @@ func (s *FPolicy) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// Info contains meta-data of the file.
-type Info struct {
-	SelectorTags []string `json:"select_tags,omitempty" yaml:"select_tags,omitempty"`
-}
-
 //go:generate go run ./codegen/main.go
 
 // Content represents a serialized opa state.
 type Content struct {
 	FormatVersion string `json:"_format_version,omitempty" yaml:"_format_version,omitempty"`
-	Info          *Info  `json:"_info,omitempty" yaml:"_info,omitempty"`
-	Workspace     string `json:"_workspace,omitempty" yaml:"_workspace,omitempty"`
-
 	Policies []FPolicy `json:"policies,omitempty" yaml:",omitempty"`
 }

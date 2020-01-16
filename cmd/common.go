@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"net/http"
 	"os"
 
 	"github.com/fatih/color"
@@ -11,7 +10,6 @@ import (
 	"github.com/ninjaneers-team/uropa/solver"
 	"github.com/ninjaneers-team/uropa/state"
 	"github.com/ninjaneers-team/uropa/utils"
-	"github.com/pkg/errors"
 )
 
 var stopChannel chan struct{}
@@ -25,59 +23,16 @@ func SetStopCh(stopCh chan struct{}) {
 
 var dumpConfig dump.Config
 
-// checkWorkspace checks if workspace exists in Opa.
-func checkWorkspace(config utils.OpaClientConfig) error {
-
-	workspace := config.Workspace
-	if workspace == "" {
-		return nil
-	}
-
-	client, err := utils.GetOpaClient(config)
-	if err != nil {
-		return err
-	}
-
-	req, err := http.NewRequest("GET", config.Address+"/workspaces/"+workspace,
-		nil)
-	if err != nil {
-		return err
-	}
-	resp, err := client.Do(nil, req, nil)
-	if err != nil {
-		return errors.Wrapf(err, "checking workspace '%v' in Opa", workspace)
-	}
-	if resp.StatusCode == 404 {
-		return errors.Errorf("workspace '%v' does not exist in Opa, "+
-			"please create it before running urOpa.", workspace)
-	}
-	if resp.StatusCode != 200 {
-		return errors.Errorf("unexpected error code while retrieving "+
-			"workspace '%v' : %v", workspace, resp.StatusCode)
-	}
-	return nil
-}
-
 func syncMain(filename string, dry bool, parallelism int) error {
 	// read target file
 	targetContent, err := file.GetContentFromFile(filename)
 	if err != nil {
 		return err
 	}
-	// prepare to read the current state from Opa
-	config.Workspace = targetContent.Workspace
-
-	if err := checkWorkspace(config); err != nil {
-		return err
-	}
 
 	client, err := utils.GetOpaClient(config)
 	if err != nil {
 		return err
-	}
-
-	if targetContent.Info != nil {
-		dumpConfig.SelectorTags = targetContent.Info.SelectorTags
 	}
 
 	// read the current state

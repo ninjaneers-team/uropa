@@ -77,7 +77,7 @@ func TestReadOpaStateFromStdin(t *testing.T) {
 	assert.Equal("-", filename)
 
 	var content bytes.Buffer
-	content.Write([]byte("services:\n- host: test.com\n  name: test policy\n"))
+	content.Write([]byte("policies:\n- raw: test.com\n  id: test policy\n"))
 
 	tmpfile, err := ioutil.TempFile("", "example")
 	if err != nil {
@@ -102,9 +102,9 @@ func TestReadOpaStateFromStdin(t *testing.T) {
 	assert.NotNil(c)
 	assert.Nil(err)
 
-	assert.Equal(Opa.Service{
-		Name: Opa.String("test policy"),
-		Host: Opa.String("test.com"),
+	assert.Equal(opa.Policy{
+		ID:  opa.String("test policy"),
+		Raw: opa.String("test.com"),
 	},
-		c.Services[0].Service)
+		c.Policies[0].Policy)
 }

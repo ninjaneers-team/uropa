@@ -27,7 +27,6 @@ type PoliciesCollection collection
 // Add adds a policy to the collection.
 // policy.ID should not be nil else an error is thrown.
 func (k *PoliciesCollection) Add(policy Policy) error {
-	// TODO abstract this check in the go-memdb library itself
 	if utils.Empty(policy.ID) {
 		return errIDRequired
 	}

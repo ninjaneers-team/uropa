@@ -37,15 +37,8 @@ func init() {
 	diffCmd.Flags().StringVarP(&diffCmdKongStateFile,
 		"state", "s", "opa.yaml", "file containing Opa's configuration. "+
 			"Use '-' to read from stdin.")
-	diffCmd.Flags().BoolVar(&dumpConfig.SkipConsumers, "skip-consumers",
-		false, "do not diff consumers or "+
-			"any plugins associated with consumers")
 	diffCmd.Flags().IntVar(&diffCmdParallelism, "parallelism",
 		10, "Maximum number of concurrent operations")
-	diffCmd.Flags().StringSliceVar(&dumpConfig.SelectorTags,
-		"select-tag", []string{},
-		"only entities matching tags specified via this flag are diffed.\n"+
-			"Multiple tags are ANDed together.")
 	diffCmd.Flags().BoolVar(&diffCmdNonZeroExitCode, "non-zero-exit-code",
 		false, "return exit code 2 if there is a diff present,\n"+
 			"exit code 0 if no diff is found,\n"+

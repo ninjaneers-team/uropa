@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"path"
 	"strconv"
 	"strings"
 )
@@ -41,7 +40,6 @@ func (e ErrArray) Error() string {
 // OpaClientConfig holds config details to use to talk to a Opa server.
 type OpaClientConfig struct {
 	Address   string
-	Workspace string
 
 	Headers []string
 
@@ -112,9 +110,6 @@ func GetOpaClient(opt OpaClientConfig) (*opa.Client, error) {
 	url, err := url.Parse(opt.Address)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to parse Opa address")
-	}
-	if opt.Workspace != "" {
-		url.Path = path.Join(url.Path, opt.Workspace)
 	}
 
 	OpaClient, err := opa.NewClient(opa.String(url.String()), c)

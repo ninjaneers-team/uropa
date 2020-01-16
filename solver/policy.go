@@ -27,11 +27,11 @@ func policyFromStuct(arg diff.Event) *state.Policy {
 func (s *policyCRUD) Create(arg ...crud.Arg) (crud.Arg, error) {
 	event := eventFromArg(arg[0])
 	policy := policyFromStuct(event)
-	createdPolicy, err := s.client.Policies.Create(nil, &policy.Policy)
+	_, err := s.client.Policies.Create(nil, &policy.Policy)
 	if err != nil {
 		return nil, err
 	}
-	return &state.Policy{Policy: *createdPolicy}, nil
+	return &state.Policy{Policy: policy.Policy}, nil
 }
 
 // Delete deletes a Policy in Opa.

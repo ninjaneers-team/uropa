@@ -1,10 +1,17 @@
-_info:
-  select_tags:
-    - managed-by-uropa
-    - org-unit-42
+_format_version: "1.1"
 policies:
-  - id: test
-    raw: |
-      package test
+  - id: test0
+    raw: |-
+      package test0
+
+      default allow = false
+  - id: test1
+    raw: |-
+      package test1
+
+      default allow = false
+  - id: test2
+    raw: |-
+      package test2
 
       default allow = false

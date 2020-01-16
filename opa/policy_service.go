@@ -160,7 +160,7 @@ func (s *PolicyService) List(ctx context.Context,
 func (s *PolicyService) ListAll(ctx context.Context) ([]*Policy, error) {
 	var policies, data []*Policy
 	var err error
-	opt := &ListOpt{Size: pageSize}
+	opt := &ListOpt{Pretty: pretty}
 
 	for opt != nil {
 		data, opt, err = s.List(ctx, opt)

@@ -7,13 +7,6 @@ const contentSchema = `{
     "_format_version": {
       "type": "string"
     },
-    "_info": {
-      "$schema": "http://json-schema.org/draft-04/schema#",
-      "$ref": "#/definitions/Info"
-    },
-    "_workspace": {
-      "type": "string"
-    },
     "policies": {
       "items": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -96,18 +89,6 @@ const contentSchema = `{
         },
         "successes": {
           "type": "integer"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object"
-    },
-    "Info": {
-      "properties": {
-        "select_tags": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
         }
       },
       "additionalProperties": false,

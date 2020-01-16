@@ -1,10 +1,8 @@
 {
-  "consumers": [
+  "policies": [
     {
-      "username": "foo"
-    },
-    {
-      "username": "bar"
+      "id": "test",
+      "raw": "test"
     }
   ]
 }

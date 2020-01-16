@@ -168,26 +168,11 @@ func Test_getContent(t *testing.T) {
 			name: "single file",
 			args: args{"testdata/file.yaml"},
 			want: &Content{
-				Services: []FPolicy{
+				Policies: []FPolicy{
 					{
-						Service: Opa.Service{
-							Name: Opa.String("svc2"),
-							Host: Opa.String("2.example.com"),
-						},
-						Routes: []*FRoute{
-							{
-								Route: Opa.Route{
-									Name:  Opa.String("r2"),
-									Paths: Opa.StringSlice("/r2"),
-								},
-							},
-						},
-					},
-				},
-				Plugins: []FPlugin{
-					{
-						Plugin: Opa.Plugin{
-							Name: Opa.String("prometheus"),
+						Policy: opa.Policy{
+							ID:  opa.String("svc2"),
+							Raw: opa.String("2.example.com"),
 						},
 					},
 				},
@@ -198,61 +183,11 @@ func Test_getContent(t *testing.T) {
 			name: "valid directory",
 			args: args{"testdata/valid"},
 			want: &Content{
-				Info: &Info{
-					SelectorTags: []string{"tag1"},
-				},
-				Services: []FPolicy{
+				Policies: []FPolicy{
 					{
-						Service: Opa.Service{
-							Name: Opa.String("svc2"),
-							Host: Opa.String("2.example.com"),
-						},
-						Routes: []*FRoute{
-							{
-								Route: Opa.Route{
-									Name:  Opa.String("r2"),
-									Paths: Opa.StringSlice("/r2"),
-								},
-							},
-						},
-					},
-					{
-						Service: Opa.Service{
-							Name: Opa.String("svc1"),
-							Host: Opa.String("1.example.com"),
-							Tags: Opa.StringSlice("team-svc1"),
-						},
-						Routes: []*FRoute{
-							{
-								Route: Opa.Route{
-									Name:  Opa.String("r1"),
-									Paths: Opa.StringSlice("/r1"),
-								},
-							},
-						},
-					},
-				},
-				Consumers: []FConsumer{
-					{
-						Consumer: Opa.Consumer{
-							Username: Opa.String("foo"),
-						},
-					},
-					{
-						Consumer: Opa.Consumer{
-							Username: Opa.String("bar"),
-						},
-					},
-					{
-						Consumer: Opa.Consumer{
-							Username: Opa.String("harry"),
-						},
-					},
-				},
-				Plugins: []FPlugin{
-					{
-						Plugin: Opa.Plugin{
-							Name: Opa.String("prometheus"),
+						Policy: opa.Policy{
+							ID:  opa.String("svc2"),
+							Raw: opa.String("2.example.com"),
 						},
 					},
 				},

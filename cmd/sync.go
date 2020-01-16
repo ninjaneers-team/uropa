@@ -38,8 +38,4 @@ func init() {
 			"Use '-' to read from stdin.")
 	syncCmd.Flags().IntVar(&syncCmdParallelism, "parallelism",
 		10, "Maximum number of concurrent operations")
-	syncCmd.Flags().StringSliceVar(&dumpConfig.SelectorTags,
-		"select-tag", []string{},
-		"only entities matching tags specified via this flag are synced.\n"+
-			"Multiple tags are ANDed together.")
 }
