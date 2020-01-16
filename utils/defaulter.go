@@ -46,11 +46,11 @@ func (d *Defaulter) Register(def interface{}) error {
 	return nil
 }
 
-// OpaTransformer
+// OpaTransformer default types
 type OpaTransformer struct {
 }
 
-// Transformer
+// Transformer reflect types
 func (t OpaTransformer) Transformer(typ reflect.Type) func(dst, src reflect.Value) error {
 	var a *int
 	var ar []int
