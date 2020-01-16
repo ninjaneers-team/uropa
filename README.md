@@ -48,15 +48,6 @@ urOpa provides declarative configuration and drift detection for Open Policy Age
 
 ## Installation
 
-### macOS
-
-If you are on macOS, install urOpa using brew:
-
-```shell
-$ brew tap ninjaneers-team/uropa
-$ brew install uropa
-```
-
 ### Linux
 
 If you are Linux, you can either use the Debian or RPM archive from
