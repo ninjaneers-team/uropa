@@ -27,3 +27,5 @@ _testmain.go
 # for this repo only
 uropa
 dist/
+
+/.idea
