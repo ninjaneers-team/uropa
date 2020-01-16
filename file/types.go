@@ -37,8 +37,8 @@ func (s FPolicy) id() string {
 }
 
 type policy struct {
-	ID        *string   `json:"id,omitempty" yaml:"id,omitempty"`
-	Raw      *string   `json:"raw,omitempty" yaml:"raw,omitempty"`
+	ID  *string `json:"id,omitempty" yaml:"id,omitempty"`
+	Raw *string `json:"raw,omitempty" yaml:"raw,omitempty"`
 }
 
 func copyToPolicy(fPolicy FPolicy) policy {
@@ -94,6 +94,6 @@ func (s *FPolicy) UnmarshalJSON(b []byte) error {
 
 // Content represents a serialized opa state.
 type Content struct {
-	FormatVersion string `json:"_format_version,omitempty" yaml:"_format_version,omitempty"`
-	Policies []FPolicy `json:"policies,omitempty" yaml:",omitempty"`
+	FormatVersion string    `json:"_format_version,omitempty" yaml:"_format_version,omitempty"`
+	Policies      []FPolicy `json:"policies,omitempty" yaml:",omitempty"`
 }

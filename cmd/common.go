@@ -51,7 +51,7 @@ func syncMain(filename string, dry bool, parallelism int) error {
 	// read the target state
 	rawState, err = file.Get(targetContent, file.RenderConfig{
 		CurrentState: currentState,
-		OpaVersion:  opaVersion,
+		OpaVersion:   opaVersion,
 	})
 	if err != nil {
 		return err

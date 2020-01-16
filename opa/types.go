@@ -3,8 +3,8 @@ package opa
 // Policy represents a Policy in Opa.
 // +k8s:deepcopy-gen=true
 type Policy struct {
-	ID        *string   `json:"id,omitempty" yaml:"id,omitempty"`
-	Raw       *string   `json:"raw,omitempty" yaml:"raw,omitempty"`
+	ID  *string `json:"id,omitempty" yaml:"id,omitempty"`
+	Raw *string `json:"raw,omitempty" yaml:"raw,omitempty"`
 }
 
 // Configuration represents a config of a plugin in Opa.

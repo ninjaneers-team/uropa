@@ -76,8 +76,8 @@ func TestPolicysCollection_Get(t *testing.T) {
 	}
 	svc2 := Policy{
 		Policy: opa.Policy{
-			ID:   opa.String("bar-id"),
-			Raw:  opa.String("example.com"),
+			ID:  opa.String("bar-id"),
+			Raw: opa.String("example.com"),
 		},
 	}
 	tests := []struct {

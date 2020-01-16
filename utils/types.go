@@ -39,7 +39,7 @@ func (e ErrArray) Error() string {
 
 // OpaClientConfig holds config details to use to talk to a Opa server.
 type OpaClientConfig struct {
-	Address   string
+	Address string
 
 	Headers []string
 
