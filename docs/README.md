@@ -76,8 +76,6 @@ To seek help, use the following resources:
 - If you still need help, please open a
   [Github issue](https://github.com/ninjaneers-team/uropa/issues/new) to ask your
   question.
-- urOpa has a very wide adoption by Opa's community and you can seek help
-  from the larger community at [Opa Nation](https://discuss.Opahq.com).
 
 One thing I humbly ask for when you need help or run into a bug is patience.
 I'll do my best to respond you at the earliest possible.
