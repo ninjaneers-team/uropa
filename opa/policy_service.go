@@ -56,7 +56,7 @@ func (s *PolicyService) Get(ctx context.Context,
 	}
 
 	endpoint := fmt.Sprintf("/v1/policies/%v", *usernameOrID)
-	req, err := s.client.NewJsonRequest("GET", endpoint, nil, nil)
+	req, err := s.client.NewJSONRequest("GET", endpoint, nil, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -81,7 +81,7 @@ func (s *PolicyService) GetByCustomID(ctx context.Context,
 		CustomID string `url:"custom_id,omitempty"`
 	}
 
-	req, err := s.client.NewJsonRequest("GET", "/v1/policies",
+	req, err := s.client.NewJSONRequest("GET", "/v1/policies",
 		&QS{CustomID: *customID}, nil)
 	if err != nil {
 		return nil, err
@@ -118,7 +118,7 @@ func (s *PolicyService) Delete(ctx context.Context,
 	}
 
 	endpoint := fmt.Sprintf("/v1/policies/%v", *usernameOrID)
-	req, err := s.client.NewJsonRequest("DELETE", endpoint, nil, nil)
+	req, err := s.client.NewJSONRequest("DELETE", endpoint, nil, nil)
 	if err != nil {
 		return err
 	}

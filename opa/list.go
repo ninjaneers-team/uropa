@@ -21,7 +21,7 @@ func (c *Client) list(ctx context.Context,
 	endpoint string, opt *ListOpt) ([]json.RawMessage, *ListOpt, error) {
 
 	q := constructQueryString(opt)
-	req, err := c.NewJsonRequest("GET", endpoint, &q, nil)
+	req, err := c.NewJSONRequest("GET", endpoint, &q, nil)
 	if err != nil {
 		return nil, nil, err
 	}

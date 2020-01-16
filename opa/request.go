@@ -29,10 +29,9 @@ func (c *Client) NewFile(body string) (*os.File, error) {
 	return f, nil
 }
 
-// NewJsonRequest creates a request based on the inputs.
+// NewFormEncodedRequest creates a request based on the inputs.
 // endpoint should be relative to the baseURL specified during
 // client creation.
-// body is always marshaled into JSON.
 func (c *Client) NewFormEncodedRequest(method, endpoint string, qs interface{},
 	reader io.Reader) (*http.Request, error) {
 
@@ -62,11 +61,11 @@ func (c *Client) NewFormEncodedRequest(method, endpoint string, qs interface{},
 	return req, nil
 }
 
-// NewJsonRequest creates a request based on the inputs.
+// NewJSONRequest creates a request based on the inputs.
 // endpoint should be relative to the baseURL specified during
 // client creation.
 // body is always marshaled into JSON.
-func (c *Client) NewJsonRequest(method, endpoint string, qs interface{},
+func (c *Client) NewJSONRequest(method, endpoint string, qs interface{},
 	body interface{}) (*http.Request, error) {
 
 	if endpoint == "" {

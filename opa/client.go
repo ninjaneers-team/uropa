@@ -178,7 +178,7 @@ func (c *Client) SetLogger(w io.Writer) {
 // Status returns the status of a Opa node
 func (c *Client) Status(ctx context.Context) (*Status, error) {
 
-	req, err := c.NewJsonRequest("GET", "/status", nil, nil)
+	req, err := c.NewJSONRequest("GET", "/status", nil, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -194,7 +194,7 @@ func (c *Client) Status(ctx context.Context) (*Status, error) {
 // Root returns the response of GET request on root of
 // Admin API (GET /).
 func (c *Client) Root(ctx context.Context) (map[string]interface{}, error) {
-	req, err := c.NewJsonRequest("GET", "/", nil, nil)
+	req, err := c.NewJSONRequest("GET", "/", nil, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -207,10 +207,10 @@ func (c *Client) Root(ctx context.Context) (map[string]interface{}, error) {
 	return root, nil
 }
 
-// Root returns the response of GET request on root of
+// Health returns the response of GET request on root of
 // Admin API (GET /).
 func (c *Client) Health(ctx context.Context) (map[string]interface{}, error) {
-	req, err := c.NewJsonRequest("GET", "/health", nil, nil)
+	req, err := c.NewJSONRequest("GET", "/health", nil, nil)
 	if err != nil {
 		return nil, err
 	}

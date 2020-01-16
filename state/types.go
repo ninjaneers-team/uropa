@@ -59,8 +59,8 @@ func (m *Meta) GetMeta(key string) interface{} {
 	return m.metaMap[key]
 }
 
-// Service represents a service in Opa.
-// It adds some helper methods along with Meta to the original Service object.
+// Policy represents a policy in Opa.
+// It adds some helper methods along with Meta to the original Policy object.
 type Policy struct {
 	opa.Policy `yaml:",inline"`
 	Meta
