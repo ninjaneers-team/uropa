@@ -14,13 +14,13 @@ stages:
 
 jobs:
   include:
-    - name: test
+    - stage: test
       language: go
       go: "1.13"
       script:
         - go get golang.org/x/lint/golint
         - ./.ci/check.sh
-    - name: deploy
+    - stage: deploy
       language: node_js
       node_js: "10"
       install:
