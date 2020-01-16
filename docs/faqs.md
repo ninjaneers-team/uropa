@@ -1,9 +1,25 @@
 # Frequently Asked Questions (FAQs)
 
-#### I use Terraform to configure Opa, why should I care about urOpa?
+#### I receive `multiple default rules named allow found`. What happend?
+
+In most cases you have multiple packages with the identical name. Eg.
+
+```
+  - id: customer
+    raw: |-
+      package customer
+
+      default allow = false
+  - id: organisations
+    raw: |-
+      package customer
+
+      default allow = false
+```
+
+Each policy needs it unique package name! Otherwise Opa will deny the policy
 
 #### Why the name 'urOpa'?
 
-It is simple, short, and easy to use in the terminal.
-It is derived from the combination of words 'declarative' and 'Opa'.
+Uropa means great-grandfather in german. 
 
