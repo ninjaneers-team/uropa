@@ -69,7 +69,7 @@ func TestWriteOpaStateToStdoutEmptyState(t *testing.T) {
 	assert.Equal(expected, output)
 }
 
-func TestWriteOpaStateToStdoutStateWithOneService(t *testing.T) {
+func TestWriteOpaStateToStdoutStateWithOnePolicy(t *testing.T) {
 	var ks, _ = state.NewOpaState()
 	var filename = "-"
 	assert := assert.New(t)
@@ -84,7 +84,7 @@ func TestWriteOpaStateToStdoutStateWithOneService(t *testing.T) {
 			FileFormat: YAML,
 		})
 	})
-	expected := fmt.Sprintf("_format_version: \"1.1\"\npolicies:\n- id: %s\n  raw: %s\n", *policy.ID, *policy.Raw)
+	expected := fmt.Sprintf("_format_version: \"1.1\"\npolicies:\n  - id: %s\n    raw: %s\n", *policy.ID, *policy.Raw)
 	assert.Equal(expected, output)
 	// JSON
 	output = captureOutput(func() {
@@ -97,8 +97,8 @@ func TestWriteOpaStateToStdoutStateWithOneService(t *testing.T) {
   "_format_version": "1.1",
   "policies": [
     {
-      "id": "example.com",
-      "raw": "my-policy"
+      "id": "first",
+      "raw": "example.com"
     }
   ]
 }`
