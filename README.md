@@ -46,10 +46,6 @@ urOpa provides declarative configuration and drift detection for Open Policy Age
   urOpa is designed to be part of your CI pipeline and can be used to not only
   push configuration to Opa but also detect drifts in configuration.
 
-## Compatibility
-
-urOpa is compatible with Opa 1.x and Opa Enterprise >= 0.35.
-
 ## Installation
 
 ### macOS
