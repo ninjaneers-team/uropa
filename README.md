@@ -2,7 +2,7 @@
 
 urOpa provides declarative configuration and drift detection for Open Policy Agent.
 
-[![Build Status](https://travis-ci.com/ninjaneers-team/uropa.svg?branch=master)](https://travis-ci.com/ninjaneers-team/uropa)
+[![Build Status](https://travis-ci.org/ninjaneers-team/uropa.svg?branch=master)](https://travis-ci.com/ninjaneers-team/uropa)
 
 ## Table of Content
 

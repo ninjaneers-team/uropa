@@ -18,132 +18,13 @@ const contentSchema = `{
   "additionalProperties": false,
   "type": "object",
   "definitions": {
-    "ActiveHealthcheck": {
-      "properties": {
-        "concurrency": {
-          "type": "integer"
-        },
-        "healthy": {
-          "$schema": "http://json-schema.org/draft-04/schema#",
-          "$ref": "#/definitions/Healthy"
-        },
-        "http_path": {
-          "type": "string"
-        },
-        "https_sni": {
-          "type": "string"
-        },
-        "https_verify_certificate": {
-          "type": "boolean"
-        },
-        "timeout": {
-          "type": "integer"
-        },
-        "type": {
-          "type": "string"
-        },
-        "unhealthy": {
-          "$schema": "http://json-schema.org/draft-04/schema#",
-          "$ref": "#/definitions/Unhealthy"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object"
-    },
     "FPolicy": {
       "properties": {
         "id": {
           "type": "string"
         },
-		"raw": {
+        "raw": {
           "type": "string"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object"
-    },
-    "Healthcheck": {
-      "properties": {
-        "active": {
-          "$schema": "http://json-schema.org/draft-04/schema#",
-          "$ref": "#/definitions/ActiveHealthcheck"
-        },
-        "passive": {
-          "$schema": "http://json-schema.org/draft-04/schema#",
-          "$ref": "#/definitions/PassiveHealthcheck"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object"
-    },
-    "Healthy": {
-      "properties": {
-        "http_statuses": {
-          "items": {
-            "type": "integer"
-          },
-          "type": "array"
-        },
-        "interval": {
-          "type": "integer"
-        },
-        "successes": {
-          "type": "integer"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object"
-    },
-    "PassiveHealthcheck": {
-      "properties": {
-        "healthy": {
-          "$ref": "#/definitions/Healthy"
-        },
-        "unhealthy": {
-          "$ref": "#/definitions/Unhealthy"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object"
-    },
-    "Policy": {
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-		"raw": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object",
-      "anyOf": [
-        {
-          "required": [
-            "id"
-          ]
-        }
-      ]
-    },
-    "Unhealthy": {
-      "properties": {
-        "http_failures": {
-          "type": "integer"
-        },
-        "http_statuses": {
-          "items": {
-            "type": "integer"
-          },
-          "type": "array"
-        },
-        "interval": {
-          "type": "integer"
-        },
-        "tcp_failures": {
-          "type": "integer"
-        },
-        "timeouts": {
-          "type": "integer"
         }
       },
       "additionalProperties": false,
