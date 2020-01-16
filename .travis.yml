@@ -9,26 +9,24 @@ env:
 services:
   - docker
 
-go:
-  - "1.13"
+stages:
+  - test
+  - deploy
 
-node_js:
-  - "10"
-
-branches:
-  only:
-    - master
-
-install:
-  - npm install -g semantic-release @semantic-release/release-notes-generator @semantic-release/commit-analyzer @semantic-release/changelog @semantic-release/github @semantic-release/git
-
-before_script:
-  - go get golang.org/x/lint/golint
-
-script:
-  - ./.ci/check.sh
-  - semantic-release
-
+jobs:
+  include:
+    - name: test
+      go: "1.13"
+      script:
+        - go get golang.org/x/lint/golint
+        - ./.ci/check.sh
+    - name: deploy
+      node_js: "10"
+      install:
+        - npm install -g semantic-release @semantic-release/release-notes-generator @semantic-release/commit-analyzer @semantic-release/changelog @semantic-release/github @semantic-release/git
+      if: branch = master
+      script:
+        - semantic-release
 cache:
   directories:
     - $HOME/gopath/pkg/mod
