@@ -3,15 +3,14 @@ sudo: required
 env:
   global:
     - GO111MODULE=on
-#  - GOPROXY=https://proxy.golang.org
 
 services:
   - docker
 
 stages:
   - test
+  - versioning
   - release
-  - deploy
 
 jobs:
   include:
@@ -21,7 +20,7 @@ jobs:
       script:
         - go get golang.org/x/lint/golint
         - ./.ci/check.sh
-    - stage: release
+    - stage: versioning
       language: node_js
       node_js: "10"
       install:
@@ -29,6 +28,25 @@ jobs:
       if: branch = master
       script:
         - semantic-release
+    - stage: release
+      language: go
+      go: "1.13"
+      addons:
+        apt:
+          packages:
+            - snapd
+      env:
+        - PATH=/snap/bin:$PATH
+      install:
+        - sudo snap install snapcraft --classic
+      if: branch = master
+      deploy:
+        - provider: script
+          skip_cleanup: true
+          script: curl -sL https://git.io/goreleaser | bash
+          on:
+            tags: true
+            condition: $TRAVIS_OS_NAME = linux
 cache:
   directories:
     - $HOME/gopath/pkg/mod
