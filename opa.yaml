@@ -1,17 +1,17 @@
 _format_version: "1.1"
 policies:
-  - id: test0
+  - id: customers
     raw: |-
-      package test1
+      package customers
 
       default allow = false
-  - id: test1
+  - id: organisations
     raw: |-
-      package test1
+      package organisations
 
       default allow = false
-  - id: test2
+  - id: employees
     raw: |-
-      package test2
+      package employees
 
       default allow = false
