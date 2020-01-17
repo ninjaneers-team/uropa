@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/ninjaneers-team/uropa/compare/v1.1.6...v1.1.7) (2020-01-17)
+
+
+### Bug Fixes
+
+* **release:** create brew formula ([74a9189](https://github.com/ninjaneers-team/uropa/commit/74a9189448eed61e4bba2c94fc742e4f97de442c))
+
 ## [1.1.6](https://github.com/ninjaneers-team/uropa/compare/v1.1.5...v1.1.6) (2020-01-17)
 
 
