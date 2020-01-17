@@ -25,7 +25,6 @@ _testmain.go
 *.prof
 
 # for this repo only
-uropa
 dist/
 
 /.idea

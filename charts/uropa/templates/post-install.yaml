@@ -1,0 +1,41 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "uropa.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "uropa.name" . }}
+    helm.sh/chart: {{ include "uropa.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Name }}
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  template:
+    metadata:
+      name: {{ template "uropa.name" . }}
+      labels:
+        app: {{ template "uropa.name" . }}
+        release: "{{ .Release.Name }}"
+        component: batch
+    spec:
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+      {{- range .Values.imagePullSecrets }}
+      - name: {{ . }}
+      {{- end }}
+      {{- end }}
+      containers:
+        - name: {{ include "uropa.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: {{ template "uropa.fullname" . }}-config-volume
+              mountPath: /opa
+          command: ["/bin/sh"]
+          args: ["-c", "./uropa sync --opa-addr {{ .Values.config.opaHost }} -s /opa"]
+      restartPolicy: OnFailure
+      volumes:
+        - name: {{ template "uropa.fullname" . }}-config-volume
+          configMap:
+            name: {{ template "uropa.fullname" . }}-config
