@@ -12,7 +12,7 @@ If you are Linux, you can either use the Debian or RPM archive from
 the Github [release page](https://github.com/ninjaneers-team/uropa/releases)
 or install by downloading a compressed archive, which contains the binary:
 
-```shel
+```shell
 $ curl -sL https://github.com/ninjaneers-team/uropa/releases/download/v0.7.0/deck_0.7.0_linux_amd64.tar.gz -o uropa.tar.gz
 $ tar -xf uropa.tar.gz -C /tmp
 $ sudo cp /tmp/uropa /usr/local/bin/
