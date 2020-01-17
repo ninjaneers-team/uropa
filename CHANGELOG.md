@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/ninjaneers-team/uropa/compare/v1.1.3...v1.1.4) (2020-01-17)
+
+
+### Bug Fixes
+
+* **release:** set gh token ([394a7be](https://github.com/ninjaneers-team/uropa/commit/394a7be49177e82f48590254107d086d46b34929))
+
 ## [1.1.3](https://github.com/ninjaneers-team/uropa/compare/v1.1.2...v1.1.3) (2020-01-17)
 
 
