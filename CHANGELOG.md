@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/ninjaneers-team/uropa/compare/v1.0.0...v1.1.0) (2020-01-17)
+
+
+### Features
+
+* **release:** add goreleaser for automatic releases ([fc5b434](https://github.com/ninjaneers-team/uropa/commit/fc5b43408bc4a0d2aac99352a6871a7d7797c728))
+
 # 1.0.0 (2020-01-16)
 
 
