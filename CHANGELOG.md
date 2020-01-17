@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/ninjaneers-team/uropa/compare/v1.1.9...v1.2.0) (2020-01-17)
+
+
+### Features
+
+* **release:** release helm chart to public repo ([01f4f7b](https://github.com/ninjaneers-team/uropa/commit/01f4f7b27910be50e60024250373f0643393de6a))
+
 ## [1.1.9](https://github.com/ninjaneers-team/uropa/compare/v1.1.8...v1.1.9) (2020-01-17)
 
 
