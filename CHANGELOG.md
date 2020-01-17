@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/ninjaneers-team/uropa/compare/v1.1.7...v1.1.8) (2020-01-17)
+
+
+### Bug Fixes
+
+* **docs:** change example file ([9037bcd](https://github.com/ninjaneers-team/uropa/commit/9037bcd0dc6ce8f22ad4a8d6f9a18da5a81a7c5c))
+
 ## [1.1.7](https://github.com/ninjaneers-team/uropa/compare/v1.1.6...v1.1.7) (2020-01-17)
 
 
