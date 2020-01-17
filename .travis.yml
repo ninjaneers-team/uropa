@@ -11,6 +11,7 @@ stages:
   - test
   - versioning
   - release
+  - chart
 
 jobs:
   include:
@@ -36,7 +37,7 @@ jobs:
           packages:
             - snapd
       env:
-          - PATH=/snap/bin:$PATH
+        - PATH=/snap/bin:$PATH
       install:
         - sudo snap install snapcraft --classic
       if: branch = master
@@ -46,6 +47,20 @@ jobs:
           overwrite: true
           script:
             git pull && curl -sL https://git.io/goreleaser | bash
+    - stage: chart
+      language: minimal
+      if: branch = master
+      env:
+        - NAME=uropa
+        - TEAM=ninjaneers-team
+        - REPOSITORY=helm
+      before_install:
+        - curl -L https://git.io/get_helm.sh | bash
+        - helm init --client-only
+      script:
+        - helm lint
+        - helm package charts/$NAME --version=$TRAVIS_TAG
+        - ./.ci/update_chart.sh
 cache:
   directories:
     - $HOME/gopath/pkg/mod

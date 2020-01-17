@@ -1,6 +1,6 @@
-# urOpa commands
+# uropa commands
 
-This document describes the various commands that are available in urOpa.
+This document describes the various commands that are available in uropa.
 The command-line `--help` flag on the main command or a sub-command (like diff,
 sync, reset, etc.) shows the help text along-with supported flags for those
 commands, and is the canonical documentation. Below is a short summary of
@@ -17,10 +17,10 @@ these commands:
 
 ## ping
 
-This command can be used to verify connectivity between Opa and urOpa.
+This command can be used to verify connectivity between Opa and uropa.
 Under the hood, it sends a `GET /` request to Opa to verify if Opa's
-Admin API is reachable and urOpa can authenticate itself against it.
-If urOpa is being used in automated environment (like in a CI), it is
+Admin API is reachable and uropa can authenticate itself against it.
+If uropa is being used in automated environment (like in a CI), it is
 recommended that you use this command before a diff/sync to ensure
 connectivity.
 
@@ -52,7 +52,7 @@ of Opa is out of sync with configuration of the input file.
 
 This command will create, update or delete entities in Opa to exactly match
 as described via the input file. You can use `diff` command to display
-the actions that urOpa will take and then use `sync` command to actually
+the actions that uropa will take and then use `sync` command to actually
 perform these actions.
 
 ## validate
@@ -68,10 +68,10 @@ command with extreme caution as the actions are irreversible.
 
 ## version
 
-This command shows the version information of the urOpa binary that is currently
+This command shows the version information of the uropa binary that is currently
 in use.
 
 ## help
 
-This command shows the help text of urOpa. Use `--help` flag on any of the
+This command shows the help text of uropa. Use `--help` flag on any of the
 above command to get help in your terminal itself.

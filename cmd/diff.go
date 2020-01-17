@@ -15,7 +15,7 @@ var (
 var diffCmd = &cobra.Command{
 	Use:   "diff",
 	Short: "Diff the current entities in Opa with the on on disks",
-	Long: `Diff is like a dry run of 'urOpa sync' command.
+	Long: `Diff is like a dry run of 'uropa sync' command.
 It will load entities form Opa and then perform a diff on those with
 the entities present in files locally. This allows you to see the entities
 that will be created or updated or deleted.

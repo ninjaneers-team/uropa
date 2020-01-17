@@ -2,7 +2,7 @@
 
 ## State
 
-State is a set of Opa configuration which is the source of truth. urOpa
+State is a set of Opa configuration which is the source of truth. uropa
 will take the state and make Admin API calls to Opa to match configuration
 stored in Opa's database with the state.
 This is also referred to as the target state or desired state.

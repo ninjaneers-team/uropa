@@ -1,6 +1,6 @@
-# Getting started with urOpa
+# Getting started with uropa
 
-Once you've [installed](installation.md) urOpa, let's get started with it.
+Once you've [installed](installation.md) uropa, let's get started with it.
 
 You can find help in the terminal itself for any command using the `-help`
 flag.
@@ -28,7 +28,7 @@ policies:
 
 ## Reset your configuration
 
-Finally, you can reset the configuration of Opa using urOpa.
+Finally, you can reset the configuration of Opa using uropa.
 The changes performed by this command are irreversible(unless you've created a
 backup using `uropa dump`) so please be careful.
 
@@ -40,5 +40,5 @@ This will delete all configuration from Opa's database.
 ```
 
 And that's it.
-Start using urOpa to declaratively configure your Opa installation today!
+Start using uropa to declaratively configure your Opa installation today!
 

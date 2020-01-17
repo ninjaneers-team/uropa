@@ -24,9 +24,9 @@ var (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "urOpa",
+	Use:   "uropa",
 	Short: "Administer your Opa declaritively",
-	Long: `urOpa helps you manage Open Policy Agent with a declarative
+	Long: `uropa helps you manage Open Policy Agent with a declarative
 configuration file.
 It can be used to export, import or sync entities to Opa.`,
 	SilenceUsage: true,
@@ -109,7 +109,7 @@ func init() {
 	rootCmd.PersistentFlags().Int("verbose", 0,
 		"Enable verbose verbose logging levels\n"+
 			"Setting this value to 2 outputs all HTTP reqeust/response\n"+
-			"between urOpa and Opa.")
+			"between uropa and Opa.")
 	viper.BindPFlag("verbose",
 		rootCmd.PersistentFlags().Lookup("verbose"))
 

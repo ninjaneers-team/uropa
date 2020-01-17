@@ -19,7 +19,7 @@ In most cases you have multiple packages with the identical name. Eg.
 
 Each policy needs it unique package name! Otherwise Opa will deny the policy
 
-#### Why the name 'urOpa'?
+#### Why the name 'uropa'?
 
 Uropa means great-grandfather in german. 
 

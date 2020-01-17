@@ -1,7 +1,7 @@
 # Installation
 
-urOpa is entirely written in Go. The build process builds a single static binary,
-which makes it easy and convenient to install urOpa.
+uropa is entirely written in Go. The build process builds a single static binary,
+which makes it easy and convenient to install uropa.
 
 You can follow along installation instructions based on your
 Operating System(OS):
@@ -28,9 +28,9 @@ docker pull ninjaneers-team/uropa
 ```
 
 You will have to mount the state files into the container as volumes so that
-urOpa can read the files during diff/sync procedures.
+uropa can read the files during diff/sync procedures.
 
-If you're integrating urOpa into your CI system, you can either install urOpa
+If you're integrating uropa into your CI system, you can either install uropa
 into the system itself, use the Docker based environment or pull the binaries
 hosted on Github in each job.
 

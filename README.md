@@ -21,15 +21,15 @@ uropa provides declarative configuration and drift detection for Open Policy Age
   Opa's database can be populated using the exported or a hand written config
   file.
 - **Diff and sync capabilities**  
-  urOpa can diff the policies in the config file and
+  uropa can diff the policies in the config file and
   the configuration in Open Policy Agent and then sync it as well.
   This can be used to detect config drifts or manual interventions.
 - **Reverse sync**  
-  urOpa supports a sync the other way as well, meaning if an
+  uropa supports a sync the other way as well, meaning if an
   entity is created in Opa and doesn't add it to the config file,
-  urOpa will detect the change.
+  uropa will detect the change.
 - **Validation**  
-  urOpa can validate a YAML file that you backup or modify to catch errors
+  uropa can validate a YAML file that you backup or modify to catch errors
   early on.
 - **Reset**  
   This can be used to drops all entities in Opa's DB.
@@ -43,7 +43,7 @@ uropa provides declarative configuration and drift detection for Open Policy Age
   Split your Opa's configuration into multiple logical files based on a shared
   set of tags amongst entities.
 - **Designed to automate configuration management**  
-  urOpa is designed to be part of your CI pipeline and can be used to not only
+  uropa is designed to be part of your CI pipeline and can be used to not only
   push configuration to Opa but also detect drifts in configuration.
 
 ## Installation
@@ -72,7 +72,7 @@ docker pull ninjaneers/uropa
 
 ## Documentation
 
-You can use `--help` flag once you've urOpa installed on your system
+You can use `--help` flag once you've uropa installed on your system
 to get help in the terminal itself.
 
 The project's documentation site is
@@ -84,7 +84,7 @@ Changelog can be found in the [CHANGELOG.md](https://github.com/ninjaneers-team/
 
 ## License
 
-urOpa is licensed with Apache License Version 2.0.
+uropa is licensed with Apache License Version 2.0.
 Please read the [LICENSE](https://github.com/ninjaneers-team/uropa/blob/master/LICENSE) file for more details.
 
 ## Special Thanks

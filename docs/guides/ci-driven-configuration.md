@@ -2,7 +2,7 @@
 
 ## or Configuration as code
 
-urOpa can be, rather should be, used in a CI pipeline to push out configuration
+uropa can be, rather should be, used in a CI pipeline to push out configuration
 Opa.
 
 It is advisable to store configuration of Opa in a Git (or any other
@@ -25,6 +25,6 @@ Unless you do this step, you do not have a truly declarative configuration
 as your are configure Opa but are never verifying. The system could be
 out of sync and can go undetected until another change is performed.
 
-Anytime you use urOpa within such an automated environment, including a
+Anytime you use uropa within such an automated environment, including a
 `uropa ping` command in the beginning of your script can ease debugging
-in future as it usually rules out connectivity issues between urOpa and Opa.
+in future as it usually rules out connectivity issues between uropa and Opa.
