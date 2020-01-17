@@ -18,6 +18,8 @@ checksum:
   name_template: 'checksums.txt'
 snapshot:
   name_template: "{{ .Tag }}"
+changelog:
+  skip: true
 nfpms:
   - name_template: '{{ .ProjectName }}_{{ .Tag }}_{{ .Arch }}'
     homepage:  https://github.com/ninjaneers-team/uropa
