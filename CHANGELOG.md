@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/ninjaneers-team/uropa/compare/v1.1.8...v1.1.9) (2020-01-17)
+
+
+### Bug Fixes
+
+* **README:** fix links in docs ([35e05f4](https://github.com/ninjaneers-team/uropa/commit/35e05f4f3ea1dd2dcd8896074c52ea9fa103bf08))
+
 ## [1.1.8](https://github.com/ninjaneers-team/uropa/compare/v1.1.7...v1.1.8) (2020-01-17)
 
 
