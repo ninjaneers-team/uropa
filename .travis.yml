@@ -60,7 +60,7 @@ jobs:
         - helm init --client-only
         - VERSION=$(git describe --tags --abbrev=0 | cut -c 2-)
       script:
-        - helm lint
+        - helm lint charts/$NAME
         - helm package charts/$NAME --version=$VERSION
         - ./.ci/update_chart.sh
 cache:
