@@ -1,8 +1,5 @@
 #!/bin/bash -ex
 
-NAME=unknown
-TEAM=unknown
-REPOSITORY=unknown
 SHA=$(cat $NAME-$VERSION.tgz | git hash-object --stdin)
 CONTENT=$(cat $NAME-$VERSION.tgz | base64)
 
