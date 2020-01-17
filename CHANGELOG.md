@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/ninjaneers-team/uropa/compare/v1.3.3...v1.3.4) (2020-01-17)
+
+
+### Bug Fixes
+
+* **chart:** update chart ([aa21189](https://github.com/ninjaneers-team/uropa/commit/aa21189cdaa7c398813cdd3fb8a7c6fe920fdfc6))
+
 ## [1.3.3](https://github.com/ninjaneers-team/uropa/compare/v1.3.2...v1.3.3) (2020-01-17)
 
 
