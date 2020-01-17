@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/ninjaneers-team/uropa/compare/v1.3.0...v1.3.1) (2020-01-17)
+
+
+### Bug Fixes
+
+* **release:** fix helm linting ([e57bb6e](https://github.com/ninjaneers-team/uropa/commit/e57bb6efaa1fef97cb6d797e4ff468718e3d5bc3))
+* **chart:** fix release version ([dfe7581](https://github.com/ninjaneers-team/uropa/commit/dfe758106f5f3373c6c4804da3ac9060922ba090))
+
 # [1.3.0](https://github.com/ninjaneers-team/uropa/compare/v1.2.0...v1.3.0) (2020-01-17)
 
 
