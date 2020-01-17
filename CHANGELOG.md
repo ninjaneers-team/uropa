@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/ninjaneers-team/uropa/compare/v1.1.4...v1.1.5) (2020-01-17)
+
+
+### Bug Fixes
+
+* **release:** disable changelog generation ([eba4183](https://github.com/ninjaneers-team/uropa/commit/eba418339a0f3bb48fc7d564b553314d92ea19b5))
+
 ## [1.1.4](https://github.com/ninjaneers-team/uropa/compare/v1.1.3...v1.1.4) (2020-01-17)
 
 
