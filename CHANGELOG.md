@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/ninjaneers-team/uropa/compare/v1.1.1...v1.1.2) (2020-01-17)
+
+
+### Bug Fixes
+
+* **release:** disable goreleaser release ([baa51f4](https://github.com/ninjaneers-team/uropa/commit/baa51f4d969d90db7d66a5c52b2dec73f3549835))
+
 ## [1.1.1](https://github.com/ninjaneers-team/uropa/compare/v1.1.0...v1.1.1) (2020-01-17)
 
 
