@@ -37,7 +37,6 @@ jobs:
             - snapd
       env:
           - PATH=/snap/bin:$PATH
-          - GITHUB_TOKEN=$GH_TOKEN
       install:
         - sudo snap install snapcraft --classic
       if: branch = master
