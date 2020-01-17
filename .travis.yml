@@ -54,12 +54,14 @@ jobs:
         - NAME=uropa
         - TEAM=ninjaneers-team
         - REPOSITORY=helm
+        - VERSION=1.0.0
       before_install:
         - curl -L https://git.io/get_helm.sh | bash
         - helm init --client-only
+        - VERSION=$(git describe --tags --abbrev=0 | cut -c 2-)
       script:
         - helm lint
-        - helm package charts/$NAME --version=$TRAVIS_TAG
+        - helm package charts/$NAME --version=$VERSION
         - ./.ci/update_chart.sh
 cache:
   directories:
