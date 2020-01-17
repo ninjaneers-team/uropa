@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/ninjaneers-team/uropa/compare/v1.2.0...v1.3.0) (2020-01-17)
+
+
+### Features
+
+* **chart:** add helm chart ([f3bacad](https://github.com/ninjaneers-team/uropa/commit/f3bacad35201125ffd0c74829a40c652d4dfd7ac))
+
 # [1.2.0](https://github.com/ninjaneers-team/uropa/compare/v1.1.9...v1.2.0) (2020-01-17)
 
 
