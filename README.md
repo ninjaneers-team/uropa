@@ -67,7 +67,7 @@ Docker image is hosted on [Docker Hub](https://hub.docker.com/r/ninjaneers-team/
 You can get the image with the command:
 
 ```
-docker pull ninjaneers-team/uropa
+docker pull ninjaneers/uropa
 ```
 
 ## Documentation
@@ -80,12 +80,12 @@ The project's documentation site is
 
 ## Changelog
 
-Changelog can be found in the [CHANGELOG.md](CHANGELOG.md) file.
+Changelog can be found in the [CHANGELOG.md](https://github.com/ninjaneers-team/uropa/blob/master/CHANGELOG.md) file.
 
 ## License
 
 urOpa is licensed with Apache License Version 2.0.
-Please read the [LICENSE](LICENSE) file for more details.
+Please read the [LICENSE](https://github.com/ninjaneers-team/uropa/blob/master/LICENSE) file for more details.
 
 ## Special Thanks
 
