@@ -34,6 +34,5 @@ brews:
       email: info@ninjaneers.de
     homepage: "https://github.com/ninjaneers-team/uropa"
     description: Declarative configuration for Opa
-    skip_upload: true
     test: |
       system "#{bin}/uropa version"
