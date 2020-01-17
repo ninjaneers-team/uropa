@@ -36,13 +36,15 @@ jobs:
           packages:
             - snapd
       env:
-        - PATH=/snap/bin:$PATH
+          - PATH=/snap/bin:$PATH
+          - GITHUB_TOKEN=$GH_TOKEN
       install:
         - sudo snap install snapcraft --classic
       if: branch = master
       deploy:
         - provider: script
           skip_cleanup: true
+          overwrite: true
           script:
             git pull && curl -sL https://git.io/goreleaser | bash
 cache:

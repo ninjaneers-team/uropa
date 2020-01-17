@@ -20,6 +20,10 @@
   a release in Github and upload all the artifacts.
 - Edit the release to remove all the commit messages as the content and
   instead add a link to the changelog. Refer to older releases for reference.
+- Homebrew release  
+  Copy the uropa.rb file to `homebrew-uropa` directory.
+  Make sure only version and checksum is changed and rest all is left as is.
+  Commit and push for the Homebrew release.
 - Docker release  
   - Run the command:
     `docker build --build-arg TAG=v0.5.0 --build-arg COMMIT=bar -t ninjaneers-team/uropa:v0.5.0 .`.
