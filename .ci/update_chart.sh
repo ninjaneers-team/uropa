@@ -6,6 +6,8 @@ REPOSITORY=unknown
 SHA=$(cat $NAME-$VERSION.tgz | git hash-object --stdin)
 CONTENT=$(cat $NAME-$VERSION.tgz | base64)
 
+echo "Upload chart $NAME"
+
 curl -X PUT -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/json" \
   "https://api.github.com/repos/$TEAM/$REPOSITORY/contents/$NAME-$VERSION.tgz" \
   -d '{
