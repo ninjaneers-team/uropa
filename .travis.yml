@@ -39,7 +39,7 @@ jobs:
         - PATH=/snap/bin:$PATH
       install:
         - sudo snap install snapcraft --classic
-      if: branch = master AND tag IS present
+      if: branch = master
       deploy:
         - provider: script
           skip_cleanup: true

@@ -12,6 +12,8 @@ builds:
       - all=-trimpath={{.Env.GOPATH}}
     ldflags:
       - -s -w -X github.com/ninjaneers-team/uropa/cmd.VERSION={{ .Tag }} -X github.com/ninjaneers-team/uropa/cmd.COMMIT={{ .ShortCommit }}
+release:
+  disable: true
 checksum:
   name_template: 'checksums.txt'
 snapshot:
