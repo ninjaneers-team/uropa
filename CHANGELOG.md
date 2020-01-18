@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/ninjaneers-team/uropa/compare/v1.3.5...v1.3.6) (2020-01-18)
+
+
+### Bug Fixes
+
+* **chart:** file content in one line ([472df9a](https://github.com/ninjaneers-team/uropa/commit/472df9a73bc98fb10816385b528da2dcdc5ac51e))
+
 ## [1.3.5](https://github.com/ninjaneers-team/uropa/compare/v1.3.4...v1.3.5) (2020-01-17)
 
 
