@@ -1,3 +1,10 @@
+## [1.3.10](https://github.com/ninjaneers-team/uropa/compare/v1.3.9...v1.3.10) (2020-01-20)
+
+
+### Bug Fixes
+
+* **chart:** echo base64 content ([eaa7006](https://github.com/ninjaneers-team/uropa/commit/eaa700608bb5bee4a45ffd64fb15884063abfd68))
+
 ## [1.3.9](https://github.com/ninjaneers-team/uropa/compare/v1.3.8...v1.3.9) (2020-01-20)
 
 
