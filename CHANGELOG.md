@@ -1,3 +1,10 @@
+## [1.3.11](https://github.com/ninjaneers-team/uropa/compare/v1.3.10...v1.3.11) (2020-01-20)
+
+
+### Bug Fixes
+
+* **chart:** fix pipeline and remove sha ([403b063](https://github.com/ninjaneers-team/uropa/commit/403b063098ea7ad6ca350289c1975b09eba5e7b9))
+
 ## [1.3.10](https://github.com/ninjaneers-team/uropa/compare/v1.3.9...v1.3.10) (2020-01-20)
 
 
