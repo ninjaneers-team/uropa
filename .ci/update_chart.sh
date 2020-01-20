@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 
-SHA=$(echo $NAME-$VERSION.tgz | git hash-object --stdin)
-CONTENT=$(echo $NAME-$VERSION.tgz | base64)
+SHA=$(cat $NAME-$VERSION.tgz | git hash-object --stdin)
+CONTENT=$(echo $(<$NAME-$VERSION.tgz) | base64)
 
 echo "Upload chart $NAME"
 
