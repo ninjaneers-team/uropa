@@ -1,3 +1,10 @@
+## [1.3.12](https://github.com/ninjaneers-team/uropa/compare/v1.3.11...v1.3.12) (2020-01-20)
+
+
+### Bug Fixes
+
+* **chart:** remove line wrap ([0ad7e87](https://github.com/ninjaneers-team/uropa/commit/0ad7e87e1f173e61cd8b6a7a7a7525c664d6333d))
+
 ## [1.3.11](https://github.com/ninjaneers-team/uropa/compare/v1.3.10...v1.3.11) (2020-01-20)
 
 
