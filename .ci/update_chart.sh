@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-CONTENT=$(base64 $NAME-$VERSION.tgz)
+CONTENT=$(base64 $NAME-$VERSION.tgz | tr -d \\n)
 
 echo "Upload chart $NAME"
 
