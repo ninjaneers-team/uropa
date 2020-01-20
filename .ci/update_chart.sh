@@ -1,7 +1,6 @@
 #!/bin/bash -ex
 
-SHA=$(cat $NAME-$VERSION.tgz | git hash-object --stdin)
-CONTENT=$(echo $(<$NAME-$VERSION.tgz) | base64)
+CONTENT=$(base64 $NAME-$VERSION.tgz)
 
 echo "Upload chart $NAME"
 
@@ -13,6 +12,5 @@ curl -X PUT -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: applicatio
           \"name\": \"Chart Release Bot\",
           \"email\": \"charts@ninjaneers.de\"
         },
-        \"content\":\"$CONTENT\",
-        \"sha\":\"$SHA\"
+        \"content\":\"$CONTENT\"
       }"
