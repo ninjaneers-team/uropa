@@ -38,4 +38,4 @@ spec:
       volumes:
         - name: {{ template "uropa.fullname" . }}-config-volume
           configMap:
-            name: {{ template "uropa.fullname" . }}-config
+            name: {{ template "uropa.fullname" . }}-uropa-config
