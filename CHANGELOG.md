@@ -1,3 +1,10 @@
+## [1.3.13](https://github.com/ninjaneers-team/uropa/compare/v1.3.12...v1.3.13) (2020-01-22)
+
+
+### Bug Fixes
+
+* **configmap:** rename ([699a9cc](https://github.com/ninjaneers-team/uropa/commit/699a9cc8b40e18dc3daf590c0cdc1d33477db436))
+
 ## [1.3.12](https://github.com/ninjaneers-team/uropa/compare/v1.3.11...v1.3.12) (2020-01-20)
 
 
